@@ -1,0 +1,5 @@
+FROM nginx:alpine
+COPY . /usr/share/nginx/html/
+CMD ["nginx-debug", "-g", "daemon off;"] 
+
+# docker image rm $(docker images -q)

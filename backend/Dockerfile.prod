@@ -1,0 +1,13 @@
+ARG TAG=3.9-slim-buster
+FROM python:${TAG}
+RUN export FLASK_APP=app.py
+
+WORKDIR /src
+RUN apt update \
+    && apt install -y python-pip python-dev
+
+COPY . .
+
+ENV WELCOME="<h1>hello there!!!</h1><br><h2> This is from env</h2>"
+RUN pip install -r requirements.txt
+CMD ["flask", "run", "--host", "0.0.0.0 "]
