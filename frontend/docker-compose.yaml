@@ -9,6 +9,8 @@ services:
       - 8081:80
     depends_on:  
       - reverser
+    networks:
+      - two_tire_net
 
   reverser:
     image: backend:0.1
@@ -19,8 +21,14 @@ services:
       WELCOME_AGAIN: "This is a new welcome msg"
     volumes:
       - nginx-testvol:/test
+    networks:
+      - two_tire_net
 
 volumes:
   nginx-testvol: 
+
+networks:
+  two_tire_net:
+    driver: bridge
     
       
